@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user-list</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}">
+</head>
+<body class="container">
+
+    <div th:replace="~{user-fragment :: head1}"></div>
+    <br>
+
+    <form th:action="@{'/user/updateUserById/'+${user.id}}" method="post">
+        <div class="form-group">
+            <label>name</label>
+            <input name="name" th:value="${user.name}" class="form-control">
+        </div>
+        <input type="radio" name="sex" value="1" th:attr="checked=${user.sex==1}" >男
+        <input type="radio" name="sex" value="0" th:attr="checked=${user.sex==0}" >女
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-info">
+            <a th:href="@{|/user/findAllUser|}" style="color: aliceblue">Return</a>
+        </button>
+    </form>
+
+    <br>
+    <div th:replace="~{user-fragment :: foot1}"></div>
+</body>
+</html>
